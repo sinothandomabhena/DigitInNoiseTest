@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TestView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var viewModel: TestViewModel = TestViewModel()
+    @StateObject private var viewModel: TestViewModel = TestViewModel(testApi: TestAPI(apiService: APIService()))
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {

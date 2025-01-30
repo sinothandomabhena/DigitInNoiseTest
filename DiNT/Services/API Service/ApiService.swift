@@ -22,7 +22,23 @@ enum APIError: Error {
     case otherError(Error)
 }
 
-class APIService {
+protocol APIServiceProtocol {
+    func request<T: Decodable>(
+        endpoint: String,
+        method: HTTPMethod,
+        body: Data?,
+        headers: [String: String]?,
+        responseType: T.Type,
+        completion: @escaping (Result<T, APIError>) -> Void
+    )
+    
+    func get<T: Decodable>(endpoint: String, responseType: T.Type, completion: @escaping (Result<T, APIError>) -> Void)
+    func post<T: Decodable>(endpoint: String, body: Data?, responseType: T.Type, completion: @escaping (Result<T, APIError>) -> Void)
+    func put<T: Decodable>(endpoint: String, body: Data?, responseType: T.Type, completion: @escaping (Result<T, APIError>) -> Void)
+    func delete<T: Decodable>(endpoint: String, responseType: T.Type, completion: @escaping (Result<T, APIError>) -> Void)
+}
+
+class APIService: APIServiceProtocol {
     private let session: URLSession
 
     init(session: URLSession = .shared) {

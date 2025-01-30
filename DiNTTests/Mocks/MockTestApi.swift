@@ -1,19 +1,15 @@
 //
-//  TestAPI.swift
-//  DiNT
+//  MockTestApi.swift
+//  DiNTTests
 //
-//  Created by Sinothando on 2025/01/28.
+//  Created by Sinothando on 2025/01/30.
 //
 
 import Foundation
 
-protocol TestAPIProtocol {
-    func saveTestResults(results: TestResultModel, completion: @escaping (Bool?) -> ())
-}
-
-class TestAPI: TestAPIProtocol {
+class MockTestAPI: TestAPIProtocol {
     let apiService: APIServiceProtocol
-    let endpoint: String = "https://enoqczf2j2pbadx.m.pipedream.net"
+    let endpoint: String = ""
     
     init(apiService: APIServiceProtocol) {
         self.apiService = apiService

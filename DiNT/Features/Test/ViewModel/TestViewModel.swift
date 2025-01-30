@@ -27,9 +27,10 @@ class TestViewModel: ObservableObject {
     private var noiseAudioPlayer: AVAudioPlayer?
     private var digitAudioPlayer: AVAudioPlayer?
     
-    private var testApi: TestAPI = TestAPI(apiService: APIService())
+    private let testApi: TestAPIProtocol
     
-    init() {
+    init(testApi: TestAPIProtocol) {
+        self.testApi = TestAPI(apiService: APIService())
         self.triplets = generateTriplets()
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .mixWithOthers)
@@ -104,6 +105,7 @@ class TestViewModel: ObservableObject {
         
         if roundCounter <= triplets.count {
             var answer = ""
+            var currentDifficult = roundDificulty
             
             for digit in triplets[roundCounter - 1] {
                 answer.append("\(digit)")
@@ -122,7 +124,7 @@ class TestViewModel: ObservableObject {
             }
             
      
-            rounds.append(RoundModel(tripletPlayed: answer, tripletAnswered: textInput.replacingOccurrences(of: " ", with: ""), difficulty: roundDificulty))
+            rounds.append(RoundModel(tripletPlayed: answer, tripletAnswered: textInput.replacingOccurrences(of: " ", with: ""), difficulty: currentDifficult ))
         }
         
         roundCounter += 1

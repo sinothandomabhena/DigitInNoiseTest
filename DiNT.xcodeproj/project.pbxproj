@@ -33,6 +33,8 @@
 		B57430472D4B83C500FE337B /* Exceptions for "DiNTTests" folder in "DiNT" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Mocks/MockApiService.swift,
+				Mocks/MockTestApi.swift,
 				Mocks/MockTestResultData.swift,
 				Mocks/MockTestResultStore.swift,
 				Mocks/MockUserDefaults.swift,
@@ -44,7 +46,10 @@
 			membershipExceptions = (
 				Features/Home/ViewModel/HomeViewModel.swift,
 				Features/Result/ViewModel/ResultViewModel.swift,
+				Features/Test/API/TestAPI.swift,
 				Features/Test/Model/TestResultModel.swift,
+				Features/Test/ViewModel/TestViewModel.swift,
+				"Services/API Service/ApiService.swift",
 				Stores/TestResultStore.swift,
 			);
 			target = B5DC6F742D4AE1A80022C33F /* DiNTTests */;
